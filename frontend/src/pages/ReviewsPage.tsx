@@ -1,6 +1,6 @@
-import { PageHero } from '../components/PageHero';
-import { ReviewsRail } from '../components/ReviewsRail';
-import { site } from '../content/siteContent';
+import { PageHero } from "../components/PageHero";
+import { ReviewsRail } from "../components/ReviewsRail";
+import { site } from "../content/siteContent";
 
 export function ReviewsPage() {
   return (
@@ -13,8 +13,16 @@ export function ReviewsPage() {
       <ReviewsRail showFooter={false} />
       <section className="wrap section compact">
         <h2>Har du besökt ED Frisör?</h2>
-        <p>Vi uppskattar all feedback från våra kunder. Lämna gärna ett omdöme på Google eller berätta om din upplevelse vid nästa besök.</p>
-        <a className="button" href={site.directionsUrl} target="_blank" rel="noreferrer">
+        <p>
+          Vi uppskattar all feedback från våra kunder. Lämna gärna ett omdöme på
+          Google eller berätta om din upplevelse vid nästa besök.
+        </p>
+        <a
+          className="button"
+          href={site.directionsUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
           Lämna ett omdöme på Google ↗
         </a>
       </section>

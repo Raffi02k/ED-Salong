@@ -1,8 +1,94 @@
 export const services = [
- {slug:'herrklippning',title:'Herrklippning',price:250,duration:'30 min',image:'haircut.webp',intro:'En ny form. Samma du.',description:'Klassiskt, kort eller lite mer längd. Vi börjar med att prata om hur du vill ha håret och vilken frisyr som passar din vardag.',details:['Samtal om längd och form','Klippning med sax och maskin','Konturer och avslutande styling'],confirmed:true},
- {slug:'fade',title:'Fade & skin fade',price:280,duration:'40 min',image:'fade.webp',intro:'Skarpa linjer. Mjuka övergångar.',description:'En tät övergång från kort till längre hår. Välj en låg, mellan eller hög fade och kombinera med din längd på toppen.',details:['Val av fade och höjd','Noggrann övergång','Konturer och styling'],confirmed:false},
- {slug:'skaggtrimning',title:'Skägg & konturer',price:150,duration:'20 min',image:'beard.webp',intro:'Detaljerna gör helheten.',description:'Forma längden, städa upp konturerna och ge skägget en tydlig form. En uppfräschning mellan klippningarna eller del av ditt besök.',details:['Formning och trimning','Rena kind- och halslinjer','Avslutande finish'],confirmed:false},
- {slug:'har-och-skagg',title:'Hår & skägg',price:350,duration:'50 min',image:'barber-craft.webp',intro:'Hela stilen. Ett besök.',description:'Klippning och skäggtrimning i samma besök. Ett sammanhållet uttryck, från frisyren till de sista skäggkonturerna.',details:['Herrklippning','Skäggtrimning och form','Styling och finish'],confirmed:false},
- {slug:'barnklippning',title:'Barnklippning',price:200,duration:'30 min',image:'child.webp',intro:'Små kunder. Stor omtanke.',description:'En lugn stund i stolen med tid för både hår och frågor. Vi pratar igenom önskemålen tillsammans innan klippningen börjar.',details:['Förslag för barn upp till 12 år','Klippning efter önskemål','Enkel styling'],confirmed:false},
- {slug:'seniorklippning',title:'Seniorklippning',price:220,duration:'30 min',image:'senior.webp',intro:'Klassisk stil håller.',description:'En välvårdad klippning som är lätt att trivas i. Längd och form anpassas efter dina önskemål.',details:['Samtal om önskad frisyr','Klippning och konturer','Avslutande styling'],confirmed:false}
+  {
+    slug: "herrklippning",
+    title: "Herrklippning",
+    price: 250,
+    duration: "30 min",
+    image: "haircut.webp",
+    intro: "En ny form. Samma du.",
+    description:
+      "Klassiskt, kort eller lite mer längd. Vi börjar med att prata om hur du vill ha håret och vilken frisyr som passar din vardag.",
+    details: [
+      "Samtal om längd och form",
+      "Klippning med sax och maskin",
+      "Konturer och avslutande styling",
+    ],
+    confirmed: true,
+  },
+  {
+    slug: "fade",
+    title: "Fade & skin fade",
+    price: 280,
+    duration: "40 min",
+    image: "fade.webp",
+    intro: "Skarpa linjer. Mjuka övergångar.",
+    description:
+      "En tät övergång från kort till längre hår. Välj en låg, mellan eller hög fade och kombinera med din längd på toppen.",
+    details: [
+      "Val av fade och höjd",
+      "Noggrann övergång",
+      "Konturer och styling",
+    ],
+    confirmed: false,
+  },
+  {
+    slug: "skaggtrimning",
+    title: "Skägg & konturer",
+    price: 150,
+    duration: "20 min",
+    image: "beard.webp",
+    intro: "Detaljerna gör helheten.",
+    description:
+      "Forma längden, städa upp konturerna och ge skägget en tydlig form. En uppfräschning mellan klippningarna eller del av ditt besök.",
+    details: [
+      "Formning och trimning",
+      "Rena kind- och halslinjer",
+      "Avslutande finish",
+    ],
+    confirmed: false,
+  },
+  {
+    slug: "har-och-skagg",
+    title: "Hår & skägg",
+    price: 350,
+    duration: "50 min",
+    image: "barber-craft.webp",
+    intro: "Hela stilen. Ett besök.",
+    description:
+      "Klippning och skäggtrimning i samma besök. Ett sammanhållet uttryck, från frisyren till de sista skäggkonturerna.",
+    details: ["Herrklippning", "Skäggtrimning och form", "Styling och finish"],
+    confirmed: false,
+  },
+  {
+    slug: "barnklippning",
+    title: "Barnklippning",
+    price: 200,
+    duration: "30 min",
+    image: "child.webp",
+    intro: "Små kunder. Stor omtanke.",
+    description:
+      "En lugn stund i stolen med tid för både hår och frågor. Vi pratar igenom önskemålen tillsammans innan klippningen börjar.",
+    details: [
+      "Förslag för barn upp till 12 år",
+      "Klippning efter önskemål",
+      "Enkel styling",
+    ],
+    confirmed: false,
+  },
+  {
+    slug: "seniorklippning",
+    title: "Seniorklippning",
+    price: 220,
+    duration: "30 min",
+    image: "senior.webp",
+    intro: "Klassisk stil håller.",
+    description:
+      "En välvårdad klippning som är lätt att trivas i. Längd och form anpassas efter dina önskemål.",
+    details: [
+      "Samtal om önskad frisyr",
+      "Klippning och konturer",
+      "Avslutande styling",
+    ],
+    confirmed: false,
+  },
 ];

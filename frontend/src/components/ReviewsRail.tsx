@@ -1,18 +1,18 @@
-import { useEffect, useId, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { reviews, reviewsStats, type Review } from '../content/reviews';
-import { site } from '../content/siteContent';
-import '../styles/reviews.css';
+import { useEffect, useId, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { reviews, reviewsStats, type Review } from "../content/reviews";
+import { site } from "../content/siteContent";
+import "../styles/reviews.css";
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setReduced(query.matches);
     update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
   }, []);
 
   return reduced;
@@ -25,7 +25,7 @@ function Stars({ rating }: { rating: number }) {
     <span
       className="reviews-stars"
       role="img"
-      aria-label={`${value.toLocaleString('sv-SE')} av 5 stjärnor`}
+      aria-label={`${value.toLocaleString("sv-SE")} av 5 stjärnor`}
     >
       <span aria-hidden="true">★★★★★</span>
       <span
@@ -40,7 +40,7 @@ function Stars({ rating }: { rating: number }) {
 }
 
 function wrapPosition(position: number, width: number) {
-  return width + (((position - width) % width) + width) % width;
+  return width + ((((position - width) % width) + width) % width);
 }
 
 type ReviewRowProps = {
@@ -131,7 +131,7 @@ function ReviewRow({
     let visible = true;
 
     const observer =
-      'IntersectionObserver' in window
+      "IntersectionObserver" in window
         ? new IntersectionObserver(([entry]) => {
             visible = entry.isIntersecting;
           })
@@ -151,7 +151,10 @@ function ReviewRow({
       const canLoop = width > 0 && width >= element.clientWidth;
 
       if (movement) {
-        const progress = Math.min(1, Math.max(0, (now - movement.started) / 420));
+        const progress = Math.min(
+          1,
+          Math.max(0, (now - movement.started) / 420),
+        );
         const eased = 1 - Math.pow(1 - progress, 3);
         position = movement.from + (movement.to - movement.from) * eased;
 
@@ -253,7 +256,7 @@ function ReviewRow({
           pointerDown.current = true;
           interact();
 
-          if (event.pointerType === 'mouse') {
+          if (event.pointerType === "mouse") {
             drag.current = {
               x: event.clientX,
               left: event.currentTarget.scrollLeft,
@@ -304,7 +307,7 @@ function ReviewRow({
 
                   <div className="reviews-person">
                     <strong>{review.name}</strong>
-                    <span>{review.service || 'Kund på Österlånggatan'}</span>
+                    <span>{review.service || "Kund på Österlånggatan"}</span>
                   </div>
                 </article>
               ))}
@@ -347,7 +350,7 @@ export type ReviewsSectionProps = {
 
 export function ReviewsRail({
   customReviews,
-  title = 'En känsla som sitter kvar.',
+  title = "En känsla som sitter kvar.",
   subtitle,
   showFooter = true,
 }: ReviewsSectionProps) {
@@ -366,11 +369,17 @@ export function ReviewsRail({
         <div className="reviews-header-flex">
           <div>
             <h2 id={headingId}>{title}</h2>
-            {subtitle && <p className="note" style={{ margin: '14px 0 0' }}>{subtitle}</p>}
+            {subtitle && (
+              <p className="note" style={{ margin: "14px 0 0" }}>
+                {subtitle}
+              </p>
+            )}
           </div>
 
           <div className="reviews-score-badge">
-            <span className="reviews-score-number">{reviewsStats.average.toFixed(1)}</span>
+            <span className="reviews-score-number">
+              {reviewsStats.average.toFixed(1)}
+            </span>
             <div className="reviews-score-meta">
               <Stars rating={reviewsStats.average} />
               <span className="reviews-score-label">
@@ -387,7 +396,9 @@ export function ReviewsRail({
             aria-pressed={paused}
             onClick={() => setPaused((v) => !v)}
           >
-            {paused ? '▶ Starta automatisk scroll' : '⏸ Pausa automatisk scroll'}
+            {paused
+              ? "▶ Starta automatisk scroll"
+              : "⏸ Pausa automatisk scroll"}
           </button>
         )}
       </div>

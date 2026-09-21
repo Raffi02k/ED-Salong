@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { services } from '../content/services';
-import { PageHero } from '../components/PageHero';
-import { site } from '../content/siteContent';
+import { Link } from "react-router-dom";
+import { services } from "../content/services";
+import { PageHero } from "../components/PageHero";
+import { site } from "../content/siteContent";
 
 export function PricesPage() {
   return (
@@ -15,10 +15,18 @@ export function PricesPage() {
         <div className="wrap section">
           <div className="price-list">
             {services.map((s, i) => (
-              <Link className="price-row" key={s.slug} to={'/tjanster/' + s.slug}>
+              <Link
+                className="price-row"
+                key={s.slug}
+                to={"/tjanster/" + s.slug}
+              >
                 <span className="price-index">0{i + 1}</span>
                 <div className="price-thumb">
-                  <img src={'/images/' + s.image} alt={s.title} loading="lazy" />
+                  <img
+                    src={"/images/" + s.image}
+                    alt={s.title}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="price-main">
                   <h2>{s.title}</h2>
@@ -32,12 +40,26 @@ export function PricesPage() {
             ))}
           </div>
 
-          <div className="booking-callout" style={{ marginTop: '55px' }}>
+          <div className="booking-callout" style={{ marginTop: "55px" }}>
             <div>
-              <p className="eyebrow" style={{ color: 'var(--yellow)', marginBottom: '8px' }}>Redo för ditt nästa besök?</p>
-              <h3 style={{ fontSize: '1.9rem', margin: 0 }}>Hitta tiden som passar dig i stolen.</h3>
+              <p
+                className="eyebrow"
+                style={{ color: "var(--yellow)", marginBottom: "8px" }}
+              >
+                Redo för ditt nästa besök?
+              </p>
+              <h3 style={{ fontSize: "1.9rem", margin: 0 }}>
+                Hitta tiden som passar dig i stolen.
+              </h3>
             </div>
-            <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "16px",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
               <Link className="button" to="/boka">
                 Boka klippning ↗
               </Link>
