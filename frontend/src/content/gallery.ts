@@ -1,8 +1,14 @@
 export const gallery = [
-{image:'fade.webp',title:'Textur & fade',category:'Klippning'},
-{image:'haircut.webp',title:'Klassisk form',category:'Klippning'},
-{image:'beard.webp',title:'Skägg med karaktär',category:'Skägg'},
-{image:'barber-craft.webp',title:'I stolen',category:'Salong'},
-{image:'salon-atmosphere.webp',title:'Barberarkänsla',category:'Salong'},
-{image:'detail.webp',title:'Rena övergångar',category:'Klippning'}
+  {image:'haircut.webp',title:'Klassisk herrklippning',category:'Klippning'},
+  {image:'fade.webp',title:'Fade & skin fade',category:'Klippning'},
+  {image:'beard.webp',title:'Skägg & konturer',category:'Skägg'},
+  {image:'child.webp',title:'Barnklippning',category:'Klippning'},
+  {image:'senior.webp',title:'Seniorklippning',category:'Klippning'},
+  {image:'detail.webp',title:'Skarpa linjer & styling',category:'Klippning'},
+  {image:'barber-craft.webp',title:'Hår & skägg i stolen',category:'Salong'},
+  {image:'tools.webp',title:'Klassiska verktyg',category:'Salong'},
+  {image:'salon-atmosphere.webp',title:'Salongsatmosfär',category:'Salong'},
+  {image:'entreview.jpg',title:'Salongens entré',category:'Salong'},
+  {image:'windowview.jpg',title:'Ljus & miljö',category:'Salong'},
+  {image:'doorview.jpg',title:'Österlånggatan 38',category:'Salong'}
 ];
