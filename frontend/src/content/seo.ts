@@ -6,8 +6,8 @@ const pages:Record<string,[string,string]>={
 '/om-oss':['Om salongen i Trollhättan | ED Frisör','Lär känna förslaget till ED Frisörs nya hemsida. Salongen finns på Österlånggatan 38 i Trollhättan.'],
 '/galleri':['Frisyrinspiration & galleri | ED Frisör Trollhättan','Utforska klippningar, skägg och salongsinspiration i demonstrationsgalleriet för ED Frisör.'],
 '/kontakt':['Kontakt & hitta hit | ED Frisör Trollhättan','Ring ED Frisör på 073-423 62 22. Hitta adress, karta och preliminära öppettider för salongen på Österlånggatan 38.'],
-'/recensioner':['Omdömen – demonstrationssida | ED Frisör','Se hur en recensionssektion kan se ut på ED Frisörs hemsida. Samtliga visade omdömen är exempel.'],
-'/boka':['Boka klippning – prova flödet | ED Frisör','Välj behandling och exempeltid i ED Frisörs bokningsdemo. För en riktig bokning, ring salongen i Trollhättan.'],
+'/recensioner':['Omdömen | ED Frisör','Se hur en recensionssektion kan se ut på ED Frisörs hemsida. Samtliga visade omdömen är exempel.'],
+'/boka':['Boka klippning | ED Frisör','Välj behandling och exempeltid i ED Frisörs bokningsdemo. För en riktig bokning, ring salongen i Trollhättan.'],
 '/integritet':['Integritet & demoinformation | ED Frisör','Information om demonstrationsmaterial, kontaktformulär och externa kartor på ED Frisörs hemsideförslag.']};
 for(const s of services)pages['/tjanster/'+s.slug]=[s.title+' i Trollhättan | ED Frisör',s.intro+' '+s.description];
 export const routePaths=Object.keys(pages);
