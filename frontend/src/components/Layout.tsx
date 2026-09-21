@@ -31,32 +31,59 @@ function Brand() {
 }
 export function Layout() {
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const loc = useLocation();
   const menu = useRef<HTMLDialogElement>(null);
   const button = useRef<HTMLButtonElement>(null);
+  const closeTimer = useRef<number | null>(null);
+
+  const handleClose = () => {
+    if (!open || closing) return;
+    setClosing(true);
+    closeTimer.current = window.setTimeout(() => {
+      setOpen(false);
+      setClosing(false);
+      menu.current?.close();
+      document.body.style.overflow = "";
+      button.current?.focus();
+    }, 220);
+  };
+
+  const handleOpen = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setClosing(false);
+    setOpen(true);
+  };
+
   useEffect(() => {
-    setOpen(false);
+    if (open && !closing) {
+      menu.current?.showModal();
+      document.body.style.overflow = "hidden";
+    }
+  }, [open, closing]);
+
+  useEffect(() => {
+    if (open) {
+      handleClose();
+    }
     if (loc.hash)
       requestAnimationFrame(() =>
         document.getElementById(loc.hash.slice(1))?.scrollIntoView(),
       );
     else window.scrollTo(0, 0);
   }, [loc.pathname, loc.hash]);
-  useEffect(() => {
-    if (open) {
-      menu.current?.showModal();
-      document.body.style.overflow = "hidden";
-    } else {
-      menu.current?.close();
-      document.body.style.overflow = "";
-    }
-  }, [open]);
+
   useEffect(
     () => () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
       document.body.style.overflow = "";
     },
     [],
   );
+
   return (
     <>
       <PageMeta />
@@ -81,7 +108,7 @@ export function Layout() {
             className="menu-button"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            onClick={() => setOpen(true)}
+            onClick={handleOpen}
           >
             Meny ☰
           </button>
@@ -90,18 +117,25 @@ export function Layout() {
       <dialog
         ref={menu}
         id="mobile-menu"
-        className="mobile-menu"
-        onCancel={() => setOpen(false)}
+        className={`mobile-menu ${open && !closing ? "open" : ""} ${closing ? "closing" : ""}`}
+        onCancel={(e) => {
+          e.preventDefault();
+          handleClose();
+        }}
         onClose={() => {
-          setOpen(false);
-          button.current?.focus();
+          if (!closing) {
+            setOpen(false);
+            setClosing(false);
+            document.body.style.overflow = "";
+            button.current?.focus();
+          }
         }}
       >
         <div className="mobile-top">
           <Brand />
           <button
             className="menu-button"
-            onClick={() => setOpen(false)}
+            onClick={handleClose}
             aria-label="Stäng meny"
           >
             Stäng ×
@@ -109,14 +143,14 @@ export function Layout() {
         </div>
         <nav aria-label="Mobilmeny">
           {navigation.map(([url, label]) => (
-            <NavLink key={url} to={url} onClick={() => setOpen(false)}>
+            <NavLink key={url} to={url} onClick={handleClose}>
               {label} ↗
             </NavLink>
           ))}
-          <Link to="/recensioner" onClick={() => setOpen(false)}>
+          <Link to="/recensioner" onClick={handleClose}>
             Omdömen ↗
           </Link>
-          <Link to="/boka" onClick={() => setOpen(false)}>
+          <Link to="/boka" onClick={handleClose}>
             Boka klippning ↗
           </Link>
         </nav>
