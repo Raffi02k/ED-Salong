@@ -16,8 +16,10 @@ function Brand() {
     >
       <img
         className="brand-logo"
-        src="/images/ed-frisor-logo-cropped.png"
+        src="/images/ed-frisor-logo-cropped.webp"
         alt=""
+        width="1367"
+        height="803"
       />
       <span className="brand-ed">
         ED<span className="brand-star">✦</span>

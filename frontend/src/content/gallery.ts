@@ -24,7 +24,7 @@ export const gallery = [
     title: "Salongsatmosfär",
     category: "Salong",
   },
-  { image: "entreview.jpg", title: "Salongens entré", category: "Salong" },
-  { image: "windowview.jpg", title: "Ljus & miljö", category: "Salong" },
-  { image: "doorview.jpg", title: "Österlånggatan 38", category: "Salong" },
+  { image: "entreview.webp", title: "Salongens entré", category: "Salong" },
+  { image: "windowview.webp", title: "Ljus & miljö", category: "Salong" },
+  { image: "doorview.webp", title: "Österlånggatan 38", category: "Salong" },
 ];

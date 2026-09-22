@@ -58,11 +58,11 @@ export function HomePage() {
             loop
             playsInline
             preload="auto"
-            poster="/media/ed_hero_poster.jpg"
+            poster="/media/ed_hero_poster.webp"
           >
             <source src="/media/ed_hero.mp4" type="video/mp4" />
             <img
-              src="/media/ed_hero_poster.jpg"
+              src="/media/ed_hero_poster.webp"
               alt="ED Frisör Österlånggatan"
               loading="eager"
             />
