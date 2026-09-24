@@ -14,9 +14,13 @@ export function PageMeta() {
       "og:description": m.description,
       "og:url": m.canonical,
       "og:image": site.url + "/og.png",
+      "og:image:width": "1024",
+      "og:image:height": "494",
+      "og:image:alt": `${site.name} - ${m.title}`,
       "twitter:title": m.title,
       "twitter:description": m.description,
       "twitter:image": site.url + "/og.png",
+      "twitter:image:alt": `${site.name} - ${m.title}`,
     })) {
       const attr = key.startsWith("og:") ? "property" : "name";
       let el = document.querySelector(`meta[${attr}="${key}"]`);
