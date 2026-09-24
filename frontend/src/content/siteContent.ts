@@ -7,7 +7,7 @@ export const site = {
   phoneHref: "tel:+46734236222",
   url: (
     import.meta.env.VITE_SITE_URL ||
-    "https://eds-frisor-trollhattan-demo.trollh-ttans-8201.chatgpt.site"
+    "https://ed-salong.vercel.app"
   ).replace(/\/$/, ""),
   indexable: import.meta.env.VITE_INDEXABLE === "true",
   directionsUrl:
