@@ -21,7 +21,7 @@ export function HomePage() {
       </div>
       <section className="home-hero">
         <div className="hero-copy">
-          <p className="eyebrow">ED FRISÖR · ÖSTERLÅNGGATAN 38</p>
+          <p className="eyebrow">ED FRISÖR · ÖSTERLÅNGGATAN 38 · TROLLHÄTTAN</p>
           <h1>
             Bra hår.
             <br />
@@ -30,8 +30,9 @@ export function HomePage() {
             <span>detaljer.</span>
           </h1>
           <p>
-            Din frisör i Trollhättan. Klippning och skägg med känsla för formen,
-            från första saxklippet till sista finishen.
+            Din frisör i Trollhättan för herrklippning, fade och skäggtrimning.
+            Noggrant hantverk med känsla för formen – från första saxklippet till
+            sista finishen.
           </p>
           <div className="hero-actions">
             <Link className="button" to="/boka">
