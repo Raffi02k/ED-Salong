@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { site, navigation } from "../content/siteContent";
 import { PageMeta } from "./PageMeta";
+import { ArrowIcon } from "./ArrowIcon";
 function Brand() {
   const loc = useLocation();
   return (
@@ -103,7 +104,7 @@ export function Layout() {
             ))}
           </nav>
           <Link className="button small header-book" to="/boka">
-            Boka klippning <span>↗</span>
+            Boka klippning <ArrowIcon />
           </Link>
           <button
             ref={button}
@@ -112,7 +113,8 @@ export function Layout() {
             aria-controls="mobile-menu"
             onClick={handleOpen}
           >
-            Meny ☰
+            <span>Meny</span>
+            <span className="menu-icon" aria-hidden="true">☰</span>
           </button>
         </div>
       </header>
@@ -133,31 +135,51 @@ export function Layout() {
           }
         }}
       >
-        <div className="mobile-top">
-          <Brand />
-          <button
-            className="menu-button"
-            onClick={handleClose}
-            aria-label="Stäng meny"
-          >
-            Stäng ×
-          </button>
+        <div className="mobile-menu-container">
+          <div className="mobile-top">
+            <Brand />
+            <button
+              className="mobile-close-btn"
+              onClick={handleClose}
+              aria-label="Stäng meny"
+            >
+              <span>Stäng</span>
+              <span aria-hidden="true">✕</span>
+            </button>
+          </div>
+          <nav aria-label="Mobilmeny" className="mobile-nav">
+            {navigation.map(([url, label], idx) => (
+              <NavLink key={url} to={url} onClick={handleClose} className="mobile-nav-link">
+                <span className="mobile-nav-num">0{idx + 1}</span>
+                <span className="mobile-nav-label">{label}</span>
+                <ArrowIcon className="mobile-nav-arrow" />
+              </NavLink>
+            ))}
+            <Link to="/recensioner" onClick={handleClose} className="mobile-nav-link">
+              <span className="mobile-nav-num">06</span>
+              <span className="mobile-nav-label">Omdömen</span>
+              <ArrowIcon className="mobile-nav-arrow" />
+            </Link>
+          </nav>
+          <div className="mobile-menu-cta-wrap">
+            <Link to="/boka" onClick={handleClose} className="mobile-menu-book-btn">
+              <span>Boka klippning</span>
+              <ArrowIcon />
+            </Link>
+          </div>
+          <div className="mobile-menu-footer">
+            <a href={site.phoneHref} className="mobile-menu-call-row">
+              <span className="mobile-menu-call-badge">Ring salongen</span>
+              <strong className="mobile-menu-call-num">{site.phone}</strong>
+            </a>
+            <div className="mobile-menu-subinfo">
+              <a href={site.directionsUrl} target="_blank" rel="noreferrer" className="mobile-menu-address-link">
+                {site.address} · Trollhättan <ArrowIcon />
+              </a>
+              <span className="mobile-menu-hours-pill">Mån–Fre 10.00–18.00</span>
+            </div>
+          </div>
         </div>
-        <nav aria-label="Mobilmeny">
-          {navigation.map(([url, label]) => (
-            <NavLink key={url} to={url} onClick={handleClose}>
-              {label} ↗
-            </NavLink>
-          ))}
-          <Link to="/recensioner" onClick={handleClose}>
-            Omdömen ↗
-          </Link>
-          <Link to="/boka" onClick={handleClose}>
-            Boka klippning ↗
-          </Link>
-        </nav>
-        <a href={site.phoneHref}>{site.phone}</a>
-        <p>{site.address} · Trollhättan</p>
       </dialog>
       <main id="main" className="page-transition" key={loc.pathname}>
         <Outlet />
@@ -187,7 +209,7 @@ export function Layout() {
           <div>
             <h3>Hitta hit</h3>
             <a href={site.directionsUrl} target="_blank" rel="noreferrer">
-              {site.address}, {site.postcode} {site.city} ↗
+              {site.address}, {site.postcode} {site.city} <ArrowIcon />
             </a>
             <h3 className="mt">Öppettider</h3>
             {site.hours.map((h) => (
@@ -219,8 +241,13 @@ export function Layout() {
         </div>
       </footer>
       <div className="mobile-cta">
-        <a href={site.phoneHref}>Ring salongen</a>
-        <Link to="/boka">Boka klippning ↗</Link>
+        <a href={site.phoneHref} className="mobile-cta-phone">
+          <span>Ring salongen</span>
+        </a>
+        <Link to="/boka" className="mobile-cta-book">
+          <span>Boka klippning</span>
+          <ArrowIcon />
+        </Link>
       </div>
     </>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { services } from "../content/services";
+import { ArrowIcon } from "./ArrowIcon";
 export function ContactForm() {
   const [state, setState] = useState("idle");
   const [feedback, setFeedback] = useState("");
@@ -138,7 +139,8 @@ export function ContactForm() {
           </span>
         </label>
         <button className="button" disabled={state === "sending"}>
-          {state === "sending" ? "Skickar…" : "Prova förfrågan ↗"}
+          <span>{state === "sending" ? "Skickar…" : "Prova förfrågan"}</span>
+          {state !== "sending" && <ArrowIcon />}
         </button>
         <p role={state === "error" ? "alert" : "status"} className="feedback">
           {feedback}

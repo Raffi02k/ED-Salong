@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/PageHero";
+import { ArrowIcon } from "../components/ArrowIcon";
 export function NotFoundPage() {
   return (
     <>
@@ -10,7 +11,7 @@ export function NotFoundPage() {
       />
       <div className="wrap section compact">
         <Link className="button" to="/">
-          Till startsidan ↗
+          <span>Till startsidan</span> <ArrowIcon />
         </Link>{" "}
         <Link className="text-link" to="/tjanster">
           Se tjänster

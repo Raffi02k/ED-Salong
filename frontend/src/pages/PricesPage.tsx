@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { services } from "../content/services";
 import { PageHero } from "../components/PageHero";
 import { site } from "../content/siteContent";
+import { ArrowIcon } from "../components/ArrowIcon";
 
 export function PricesPage() {
   return (
@@ -34,7 +35,7 @@ export function PricesPage() {
                 </div>
                 <span className="duration">{s.duration}</span>
                 <strong>
-                  {s.price} kr <span>↗</span>
+                  {s.price} kr <ArrowIcon />
                 </strong>
               </Link>
             ))}
@@ -61,7 +62,8 @@ export function PricesPage() {
               }}
             >
               <Link className="button" to="/boka">
-                Boka klippning ↗
+                <span>Boka klippning</span>
+                <ArrowIcon />
               </Link>
               <a className="button light" href={site.phoneHref}>
                 Ring {site.phone}

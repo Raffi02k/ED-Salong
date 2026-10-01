@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { services } from "../content/services";
 import { NotFoundPage } from "./NotFoundPage";
+import { ArrowIcon } from "../components/ArrowIcon";
 export function ServicePage() {
   const { slug } = useParams();
   const s = services.find((s) => s.slug === slug);
@@ -28,7 +29,7 @@ export function ServicePage() {
             </span>
           </div>
           <Link className="button" to={"/boka?tjanst=" + s.slug}>
-            Välj {s.title.toLowerCase()} ↗
+            <span>Välj {s.title.toLowerCase()}</span> <ArrowIcon />
           </Link>
           <p className="note">
             DEMO · Behandlingsinnehåll och tid är förslag. Slutligt pris
@@ -51,7 +52,7 @@ export function ServicePage() {
           ))}
         </div>
         <Link className="text-link" to="/prislista">
-          Jämför alla priser ↗
+          <span>Jämför alla priser</span> <ArrowIcon />
         </Link>
       </section>
     </>

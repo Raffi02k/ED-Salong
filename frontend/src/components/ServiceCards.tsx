@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { services } from "../content/services";
+import { ArrowIcon } from "./ArrowIcon";
 export function ServiceCards({ limit = services.length }: { limit?: number }) {
   return (
     <div className="service-grid">
@@ -17,7 +18,7 @@ export function ServiceCards({ limit = services.length }: { limit?: number }) {
           </div>
           <div className="service-card-title">
             <h3>{s.title}</h3>
-            <span>↗</span>
+            <ArrowIcon />
           </div>
           <div className="service-card-meta">
             <span>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageHero } from "../components/PageHero";
 import { ReviewsRail } from "../components/ReviewsRail";
+import { ArrowIcon } from "../components/ArrowIcon";
 
 export function AboutPage() {
   return (
@@ -36,7 +37,7 @@ export function AboutPage() {
             finish.
           </p>
           <Link className="button light" to="/kontakt">
-            Hitta till salongen ↗
+            <span>Hitta till salongen</span> <ArrowIcon />
           </Link>
         </div>
       </section>
@@ -62,10 +63,10 @@ export function AboutPage() {
           }}
         >
           <Link className="button" to="/boka">
-            Boka klippning ↗
+            <span>Boka klippning</span> <ArrowIcon />
           </Link>
           <Link className="text-link" to="/galleri">
-            Se galleriet ↗
+            <span>Se galleriet</span> <ArrowIcon />
           </Link>
         </div>
       </section>

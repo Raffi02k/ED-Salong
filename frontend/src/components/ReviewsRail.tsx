@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { reviews, reviewsStats, type Review } from "../content/reviews";
 import { site } from "../content/siteContent";
+import { ArrowIcon } from "./ArrowIcon";
 import "../styles/reviews.css";
 
 function useReducedMotion() {
@@ -419,7 +420,7 @@ export function ReviewsRail({
       {showFooter && (
         <footer className="reviews-footer wrap">
           <Link to="/recensioner">
-            Läs fler omdömen <span>↗</span>
+            <span>Läs fler omdömen</span> <ArrowIcon />
           </Link>
         </footer>
       )}

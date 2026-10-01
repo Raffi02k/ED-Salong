@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { site } from "../content/siteContent";
 import { ServiceCards } from "../components/ServiceCards";
 import { ReviewsRail } from "../components/ReviewsRail";
+import { ArrowIcon } from "../components/ArrowIcon";
 export function HomePage() {
   return (
     <>
@@ -36,7 +37,8 @@ export function HomePage() {
           </p>
           <div className="hero-actions">
             <Link className="button" to="/boka">
-              Boka din klippning ↗
+              <span>Boka din klippning</span>
+              <ArrowIcon />
             </Link>
             <Link className="text-link" to="/prislista">
               Se prislistan
@@ -98,8 +100,12 @@ export function HomePage() {
         </div>
         <div>
           <small>Enkelt att nå oss</small>
-          <a href={site.phoneHref}>Ring ↗</a>
-          <span>{site.phone}</span>
+          <strong>
+            <a href={site.phoneHref} className="facts-phone-link">
+              Ring <ArrowIcon />
+            </a>
+          </strong>
+          <span className="facts-phone-num">{site.phone}</span>
         </div>
       </section>
       <section className="section wrap">
@@ -113,7 +119,8 @@ export function HomePage() {
             </h2>
           </div>
           <Link className="text-link" to="/tjanster">
-            Alla tjänster ↗
+            <span>Alla tjänster</span>
+            <ArrowIcon />
           </Link>
         </div>
         <ServiceCards limit={3} />
@@ -138,7 +145,8 @@ export function HomePage() {
             berätta hur du vill ha det. Vi börjar där.
           </p>
           <Link className="button light" to="/om-oss">
-            Möt ED Frisör ↗
+            <span>Möt ED Frisör</span>
+            <ArrowIcon />
           </Link>
           <span className="stamp">Trollhättan</span>
         </div>
@@ -181,7 +189,8 @@ export function HomePage() {
           en ny look?
         </h2>
         <Link to="/boka" className="button">
-          Hitta ditt nästa besök ↗
+          <span>Hitta ditt nästa besök</span>
+          <ArrowIcon />
         </Link>
         <a className="text-link" href={site.phoneHref}>
           {site.phone}

@@ -1,6 +1,7 @@
 import { PageHero } from "../components/PageHero";
 import { ReviewsRail } from "../components/ReviewsRail";
 import { site } from "../content/siteContent";
+import { ArrowIcon } from "../components/ArrowIcon";
 
 export function ReviewsPage() {
   return (
@@ -23,7 +24,7 @@ export function ReviewsPage() {
           target="_blank"
           rel="noreferrer"
         >
-          Lämna ett omdöme på Google ↗
+          <span>Lämna ett omdöme på Google</span> <ArrowIcon />
         </a>
       </section>
     </>

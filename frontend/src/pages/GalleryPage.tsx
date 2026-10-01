@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { gallery } from "../content/gallery";
 import { PageHero } from "../components/PageHero";
+import { ArrowIcon } from "../components/ArrowIcon";
 export function GalleryPage() {
   const [filter, setFilter] = useState("Alla");
   const [active, setActive] = useState(0);
@@ -44,7 +45,7 @@ export function GalleryPage() {
                 />
                 <span>
                   <strong>{g.title}</strong>
-                  <small>{g.category} ↗</small>
+                  <small>{g.category} <ArrowIcon /></small>
                 </span>
               </button>
             ) : null,

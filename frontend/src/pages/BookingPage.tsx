@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { services } from "../content/services";
 import { site } from "../content/siteContent";
+import { ArrowIcon } from "../components/ArrowIcon";
 import "../styles/booking.css";
 
 function dateValue(day: Date) {
@@ -257,7 +258,7 @@ export function BookingPage() {
                   att bekräfta en riktig tid och aktuellt pris.
                 </p>
                 <a className="button booking-next" href={site.phoneHref}>
-                  Ring {site.phone} <span>↗</span>
+                  <span>Ring {site.phone}</span> <ArrowIcon />
                 </a>
                 <button
                   className="booking-back booking-restart"

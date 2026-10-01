@@ -2,6 +2,7 @@ import { useState } from "react";
 import { site } from "../content/siteContent";
 import { PageHero } from "../components/PageHero";
 import { ContactForm } from "../components/ContactForm";
+import { ArrowIcon } from "../components/ArrowIcon";
 export function ContactPage() {
   const [map, setMap] = useState(false);
   return (
@@ -29,7 +30,7 @@ export function ContactPage() {
               rel="noreferrer"
               href={site.directionsUrl}
             >
-              Öppna i Google Maps ↗
+              <span>Öppna i Google Maps</span> <ArrowIcon />
             </a>
           </div>
           <div className="hours">
@@ -59,7 +60,7 @@ export function ContactPage() {
               <p className="eyebrow">Österlånggatan 38 · Trollhättan</p>
               <h3>Här finns stolen.</h3>
               <button className="button" onClick={() => setMap(true)}>
-                Visa karta ↗
+                <span>Visa karta</span> <ArrowIcon />
               </button>
               <p className="note">Kartan hämtas från Google när du klickar.</p>
             </div>
