@@ -129,20 +129,64 @@ function ReviewRow({
     let frame = 0;
     let lastTime = 0;
     let position = el.scrollLeft;
-    let visible = true;
+    let visible = false;
+    let isRunning = false;
+    let isWindowScrolling = false;
+    let windowScrollTimer: number | null = null;
+
+    const onWindowScroll = () => {
+      isWindowScrolling = true;
+      if (windowScrollTimer) clearTimeout(windowScrollTimer);
+      windowScrollTimer = window.setTimeout(() => {
+        isWindowScrolling = false;
+        lastTime = performance.now();
+      }, 100);
+    };
+    window.addEventListener("scroll", onWindowScroll, { passive: true });
+
+    function start() {
+      if (!isRunning && visible && !document.hidden) {
+        isRunning = true;
+        lastTime = performance.now();
+        frame = requestAnimationFrame(tick);
+      }
+    }
+
+    function stop() {
+      if (isRunning) {
+        isRunning = false;
+        cancelAnimationFrame(frame);
+      }
+    }
 
     const observer =
       "IntersectionObserver" in window
-        ? new IntersectionObserver(([entry]) => {
-            visible = entry.isIntersecting;
-          })
+        ? new IntersectionObserver(
+            ([entry]) => {
+              visible = entry.isIntersecting;
+              if (visible) {
+                start();
+              } else {
+                stop();
+              }
+            },
+            { threshold: 0.05 },
+          )
         : null;
 
     observer?.observe(el);
 
     function tick(now: number) {
+      if (!visible || document.hidden) {
+        isRunning = false;
+        return;
+      }
+
       const element = rail.current;
-      if (!element) return;
+      if (!element) {
+        isRunning = false;
+        return;
+      }
 
       const width = group.current?.offsetWidth || 0;
       const delta = lastTime ? Math.min(now - lastTime, 40) : 0;
@@ -173,6 +217,7 @@ function ReviewRow({
       } else if (
         canLoop &&
         visible &&
+        !isWindowScrolling &&
         !document.hidden &&
         !pausedRef.current &&
         !pointerDown.current &&
@@ -190,18 +235,22 @@ function ReviewRow({
         position = wrapPosition(position, width);
 
         element.scrollLeft = position;
-      } else {
-        position = element.scrollLeft;
       }
 
       frame = requestAnimationFrame(tick);
     }
 
-    frame = requestAnimationFrame(tick);
+    // Start only if in view
+    if (!observer) {
+      visible = true;
+      start();
+    }
 
     return () => {
-      cancelAnimationFrame(frame);
+      stop();
       observer?.disconnect();
+      window.removeEventListener("scroll", onWindowScroll);
+      if (windowScrollTimer) clearTimeout(windowScrollTimer);
       buttonScroll.current = null;
     };
   }, [items, reverse, reduced]);

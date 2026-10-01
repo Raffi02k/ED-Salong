@@ -1,9 +1,31 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { site } from "../content/siteContent";
 import { ServiceCards } from "../components/ServiceCards";
 import { ReviewsRail } from "../components/ReviewsRail";
 import { ArrowIcon } from "../components/ArrowIcon";
 export function HomePage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.05 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <div className="ticker" aria-hidden="true">
@@ -55,6 +77,7 @@ export function HomePage() {
         </div>
         <div className="hero-photo">
           <video
+            ref={videoRef}
             className="hero-video"
             autoPlay
             muted
